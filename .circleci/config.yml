@@ -1,0 +1,15 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/components
+    docker:
+      - image: circleci/node:8-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          key: components-{{ checksum "package.json" }}
+      - run: npm install
+      - save_cache:
+          key: components-{{ checksum "package.json" }}
+          paths:
+            - "node_modules"
