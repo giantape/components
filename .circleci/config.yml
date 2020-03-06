@@ -1,17 +1,20 @@
 version: 2.1
-orbs:
-  node: circleci/node@1.1.6
 jobs:
-  build-and-test:
-    executor:
-      name: node/default
+  build:
+    docker:
+      - image: circleci/<language>:<version TAG>
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm test
+      - run: <command>
+  test:
+    docker:
+      - image: circleci/<language>:<version TAG>
+    steps:
+      - checkout
+      - run: <command>
 workflows:
-    build-and-test:
-      jobs:
-        - build-and-test
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test 
