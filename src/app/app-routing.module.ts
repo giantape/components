@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'elements', loadChildren: () => import('./elements/elements.module').then((em) => em.ElementsModule) },
   { path: 'collections', loadChildren: () => import('./collections/collections.module').then((cm) => cm.CollectionsModule) },
   { path: 'views', loadChildren: () => import('./views/views.module').then((vm) => vm.ViewsModule) },
+  { path: 'modules', loadChildren: () => import('./mods/mods.module').then((mods) => mods.ModsModule)  },
   { path: '', component: HomeComponent },
   { path: '**', component: NotFoundComponent }
 ];
